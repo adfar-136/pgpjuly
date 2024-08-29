@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="main">First webpage</h1>
+    <script>
+       /*-- var a = 10;
+        console.log(a);
+        function sum(x){
+            var double = x+x
+            return double
+        }
+        var add = sum(6)
+        console.log(add);*/
+        function greet(){
+           
+            function inner(){
+                var a = 10;
+                function inner2(){
+                    console.log(a);
+                }
+                inner2()
+            }
+            inner()
+        }
+        greet()
+    </script>
+</body>
+</html>
