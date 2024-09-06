@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="inputfield">
+    <button id="btn">Add Task</button>
+    <ul id="list">
+
+    </ul>
+    <script>
+        let btn =document.getElementById("btn")
+        let input = document.getElementById("inputfield")
+        let list = document.getElementById("list")
+        btn.addEventListener("click",()=>{
+            let value = input.value;
+            let li = document.createElement("li")
+            li.innerText = value;
+            li.setAttribute("class","main")
+            let removeBtn = document.createElement("button")
+            removeBtn.innerText = "Remove"
+            removeBtn.onclick=()=>{
+                list.removeChild(li)
+            }
+            li.appendChild(removeBtn)
+            list.appendChild(li)
+            input.value=""
+
+        })
+    </script>
+</body>
+</html>
