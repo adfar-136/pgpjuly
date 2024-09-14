@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            column-gap: 5%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Adfar Rasheed's New articles</h1>
+    <div id="main"></div>
+    <script>
+        async function getNews(){
+           try{
+            let data =await fetch("https://newsapi.org/v2/everything?q=tesla&from=2024-08-14&sortBy=publishedAt&apiKey=28a2c6b3aa1945c2afd8012e42fdac9e")
+            let jsonData = await data.json()
+            jsonData.articles.map((item,index)=>{
+                document.getElementById("main").innerHTML = document.getElementById("main").innerHTML + `
+                 <ul>
+                  <li>${item.title!=="[Removed]"?item.title.slice(0,20):"No title available"}</li>
+                  <li>${item.description}</li>
+                  <a href=${item.url}>Read More</a>
+                  <img src=${item.urlToImage?item.urlToImage:"https://cdn.mos.cms.futurecdn.net/R6VhkMMYuGNN5kMxW58hCQ-1200-80.jpg"} width="200px" height="200px"/>
+                 </ul>
+              `
+                })
+           }  catch(error){
+            console.log(error);
+           }
+            
+        }
+        getNews()
+        /**function getNews(){
+            let data = fetch("https://newsapi.org/v2/everything?q=tesla&from=2024-08-14&sortBy=publishedAt&apiKey=28a2c6b3aa1945c2afd8012e42fdac9e")
+        console.log(data);
+        data.then((result)=>{
+          return result.json()
+        }).then((response)=>{
+           response.articles.map((item,index)=>{
+           document.getElementById("main").innerHTML = document.getElementById("main").innerHTML + `
+            <ul>
+             <li>${item.title!=="[Removed]"?item.title.slice(0,20):"No title available"}</li>
+             <li>${item.description}</li>
+             <a href=${item.url}>Read More</a>
+             <img src=${item.urlToImage?item.urlToImage:"https://cdn.mos.cms.futurecdn.net/R6VhkMMYuGNN5kMxW58hCQ-1200-80.jpg"} width="200px" height="200px"/>
+            </ul>
+         `
+           })
+        })
+        }**/
+        // getNews()
+    </script>
+</body>
+</html>
