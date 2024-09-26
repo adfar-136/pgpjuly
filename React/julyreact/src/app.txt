@@ -1,0 +1,49 @@
+//first react code 
+import React from 'react'
+
+function App() {
+  return (
+    <div>
+      <h1>Home Component</h1>
+
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, voluptatum.</p>
+      <About/>
+      <About/>
+    </div>
+  )
+}
+function About(){
+  return <>
+    <h1>I am About component</h1>
+    <h1>I am About component</h1>
+    <h1>I am About component</h1>
+    <Contact/>
+    <h1>I am About component</h1>
+  </>
+   
+}
+
+function Contact(){
+  return <h1>I am Contact component</h1>
+}
+export default App
+
+//props
+
+import React from 'react'
+import {About} from "./components/About"
+function App(props) {
+  console.log("App props", props)
+  var x = "main"
+  var mystyle = {color:"red",backgroundColor:"pink"}
+  return (
+    <div>
+      <h1 className={x} style={mystyle}>I am Home Component</h1>
+      <About fname ="Adfar" lname="Rashid"/>
+      <About fname ="Sharad" lname="Sinha"/>
+      <About fname ="Umar" lname="Khan"/>
+    </div>
+  )
+}
+
+export default App
