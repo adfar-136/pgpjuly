@@ -47,3 +47,124 @@ function App(props) {
 }
 
 export default App
+
+
+import Header from "./components/Header"
+import Main from "./components/Main"
+function App(){
+  var condition = true
+ function  hanldeCondition(){
+  condition = !condition
+  console.log(condition)
+ }
+ console.log(condition)
+  return <div>
+    <button onClick={hanldeCondition}>Change Condition</button>
+     {condition ?<Header/>:<Main/>}
+     {condition && <h1>I am true</h1>}
+  </div>
+}
+export default App
+
+import React from 'react'
+
+function App() {
+  let count = 10;
+  const handleClick = () => {
+    count++;
+    console.log(count)
+  }
+  return (
+    <div>
+      <h1>{count}</h1>
+      <button onClick={handleClick}>Increment by +1</button>
+    </div>
+  )
+}
+
+export default App
+
+import React, { useState } from 'react'
+
+function App() {
+  const [count,setCount] = useState(0)
+  const handleClick = () => {
+   setCount(count+2)
+  }
+  console.log("Adfar")
+  return (
+    <div>
+      <h1>{count}</h1>
+      <button onClick={handleClick}>Increment by +1</button>
+    </div>
+  )
+}
+
+export default App
+
+import { useState } from "react"
+import Header from "./components/Header"
+import Main from "./components/Main"
+function App(){
+  const [condition,setCondition] = useState(true)
+ function  hanldeCondition(){
+  setCondition(!condition)
+ }
+ console.log(condition)
+  return <div>
+    <button onClick={hanldeCondition}>Change Condition</button>
+     {condition ?<Header/>:<Main/>}
+     {condition && <h1>I am true</h1>}
+  </div>
+}
+export default App
+
+//themechanger 1
+import React, { useState } from 'react'
+
+export default function App() {
+  const [bgColor,setBgColor] = useState("white")
+  const [color,setColor] = useState("black")
+  const [text,setText] = useState("Dark")
+  const handleTheme=()=>{
+    if(bgColor==="white"){
+      setBgColor("black")
+      setColor("white")
+      setText("Light")
+    } else {
+      setBgColor("white")
+      setColor("black")
+      setText("Dark")
+    }
+  }
+  return (
+    <div style={{backgroundColor:bgColor,color:color,height:"100vh"}}>
+      <h1>ThemeChanger</h1>
+      <button onClick={handleTheme}>{text} Mode</button>
+    </div>
+  )
+}
+
+
+themechanger2
+
+import React, { useState } from 'react'
+import "./app.css"
+function App() {
+  const [cname,setCname] = useState("light")
+  const [text,setText] = useState("Dark")
+  function handleTheme(){
+    setCname(cname==="light"?"dark":"light")
+    setText(cname==="light"?"Light":"Dark")
+  }
+  return (
+    <div className={cname}>
+      <h1>Hello, World!</h1>
+      <button onClick={handleTheme}>
+        {text} Mode
+      </button>
+    </div>
+  )
+}
+
+export default App

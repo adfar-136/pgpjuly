@@ -1,19 +1,14 @@
-import React from 'react'
-import Blog from './components/Blog'
-import { About } from './components/About'
+import React, { useState } from 'react'
 
 function App() {
+  const [condition,setCondition] = useState(true)
+  function handleTheme(){
+    setCondition(!condition)
+  }
   return (
-    <div>
-      <Blog>
-        <div>
-          <h1>I am an children article</h1>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis molestias cum quis repellat quam tenetur iste suscipit delectus, voluptates porro!</p>
-        </div>
-      </Blog>
-      <About fname="ADfar" lname="rasheed"/>
-      <About fname="rrr" lname="yyy"/>
-      <About fname="ttt" lname="uuu"/>
+    <div style={{backgroundColor:condition?"black":"white",color:condition?"white":"black"}}>
+      <h1>Hello world</h1>
+      <button onClick={handleTheme}>{condition?"LIght":"Dark"} Mode</button>
     </div>
   )
 }

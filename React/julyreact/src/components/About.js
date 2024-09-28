@@ -6,7 +6,7 @@ function About({fname,lname,x}){
         <div>
             <Contact x={x}/>
             <h1>About</h1>
-           <h1> {fname} {lname}</h1>
+           <h1> i am {fname} and my last name is {lname}</h1>
 
         </div>
     )
