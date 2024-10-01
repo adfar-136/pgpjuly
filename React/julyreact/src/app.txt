@@ -168,3 +168,89 @@ function App() {
 }
 
 export default App
+
+import React, { useState } from 'react'
+
+function App() {
+  const [condition,setCondition] = useState(true)
+  function handleTheme(){
+    setCondition(!condition)
+  }
+  return (
+    <div style={{backgroundColor:condition?"black":"white",color:condition?"white":"black"}}>
+      <h1>Hello world</h1>
+      <button onClick={handleTheme}>{condition?"LIght":"Dark"} Mode</button>
+    </div>
+  )
+}
+
+export default App
+
+
+//batching
+
+import React from 'react'
+import { useState } from 'react'
+
+export default function App() {
+  const [count,setCount] = useState(0)
+  const [number,setNumber] = useState(100)
+  function handleIncrement(){
+    setCount(count+1)
+    setCount(prev=>prev+2)
+    setCount(count+1)
+    setNumber(number+22)
+  }
+
+  return (
+    <div>
+      <h1>Counter Application</h1>
+      <h1>count : {count}</h1>
+      <button onClick={handleIncrement}>++++</button>
+      <h1>Number : {number}</h1>
+      
+    </div>
+  )
+}
+
+
+//controlled components
+import React from 'react'
+import { useState } from 'react'
+
+export default function App() {
+  const [username,setUserName] =useState("")
+  const [email,setEmail] = useState("")
+  const [pass,setPass]= useState("")
+  const [condition,setCondition] =useState(false)
+  function handleSubmit(e){
+    e.preventDefault()
+    setCondition(true)
+    // setUserName("")
+    // setPass("")
+  }
+  return (
+    <div>
+      <h1>Hello, world!</h1>
+     
+      <form onSubmit={handleSubmit}>
+        <label>UserName : </label>
+        <input type="text" value={username} 
+        onChange={(e)=>setUserName(e.target.value)}/> <br />
+        <label>Email : </label>
+        <input type="email" 
+        value={email} onChange={(e)=>setEmail(e.target.value)}/> <br />
+        <label>Password : </label>
+        <input type="password" 
+        value={pass} onChange={(e)=>setPass(e.target.value)}/> <br />
+        <button type="submit">Login</button>
+        {email}
+       {condition && (
+         <h1>
+         my name is {username}  and my password is:{pass}
+       </h1>
+       )}
+      </form>
+    </div>
+  )
+}
