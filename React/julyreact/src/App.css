@@ -1,11 +1,23 @@
-.light{
-    background-color: white;
-    color: black;
+.container {
+    border: 2px solid red;
+    padding: 20px;
+    width: 300px;
+    margin-bottom: 20px;
+   
+    
 }
-.dark{
-    background-color: black;
-    color: white;
+.main{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
-div{
-    height: 100vh;
+.container > div {
+    width: 200px;
+    background-color: aqua;
+}
+.active{
+    background-color: rgb(25, 226, 159);
+    padding: 5px 5px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-size: 25px;
 }

@@ -374,3 +374,35 @@ export default function App() {
     </div>
   )
 }
+
+
+//api fetch and map
+import React, { useEffect, useState } from 'react'
+import Bitcoin from './components/Bitcoin'
+import "./app.css"
+export default function App() {
+  const [data,setData] = useState("")
+  async function handleData(){
+     let data =await fetch("https://api.coinlore.net/api/tickers/")
+     let jsonData = await data.json()
+     setData(jsonData.data)
+  }
+  useEffect(()=>{
+    handleData()
+  },[])
+  return (
+    <div>
+      <div className='main'>
+        {data && (
+          <>
+           {data.map((item,index)=>{
+            return (
+                 <Bitcoin item={item} key={item.volume24}/>
+            )
+           })}
+          </>
+        )}
+      </div>
+    </div>
+  )
+}
