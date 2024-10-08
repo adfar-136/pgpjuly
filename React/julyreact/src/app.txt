@@ -406,3 +406,40 @@ export default function App() {
     </div>
   )
 }
+
+
+//react router dom  
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from './routes/Home'
+import About from './routes/About'
+import Contact from './routes/Contact'
+import Blog from './routes/Blog'
+import Navbar from './routes/Navbar'
+import User from './routes/User'
+import UserDetails from './routes/UserDetails'
+import Adhaar from './routes/Adhaar';
+
+export default function App() {
+  
+  return (
+    <div>
+     
+      <BrowserRouter>
+        <Navbar/>
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/about' element={<About/>}/>
+          <Route path='/contact' element={<Contact/>}/>
+          <Route path='/blog' element={<Blog/>}/>
+          <Route path='/about/users' element={<User/>}/>
+          <Route path='/about/users/:id'
+           element={<UserDetails/>}/>
+          <Route path='/contact/:id/name/:adhaar'
+          element={<Adhaar/>}/>
+         
+        </Routes>
+      </BrowserRouter>
+    </div>
+  )
+}

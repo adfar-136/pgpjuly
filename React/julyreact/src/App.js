@@ -1,25 +1,18 @@
-import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Home from './routes/Home'
-import About from './routes/About'
-import Contact from './routes/Contact'
-import Blog from './routes/Blog'
-import Navbar from './routes/Navbar'
-
+import React, { createContext, useContext, useState } from 'react'
+import Comp1 from './context/Comp1'
+import { coloContext } from './context/Colorprovider'
+let myContext = createContext()
 export default function App() {
-  
+  const [count,setCount] = useState(0)
+  const data = useContext(coloContext)
+  console.log(data)
   return (
     <div>
-     
-      <BrowserRouter>
-        <Navbar/>
-        <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/about' element={<About/>}/>
-          <Route path='/contact' element={<Contact/>}/>
-          <Route path='/blog' element={<Blog/>}/>
-        </Routes>
-      </BrowserRouter>
+      <myContext.Provider value={{count,setCount}}>
+        <Comp1/>
+      </myContext.Provider>
     </div>
   )
 }
+
+export {myContext}
