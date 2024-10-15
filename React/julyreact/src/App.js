@@ -1,18 +1,21 @@
-import React, { createContext, useContext, useState } from 'react'
-import Comp1 from './context/Comp1'
-import { coloContext } from './context/Colorprovider'
-let myContext = createContext()
+import React from 'react'
+import Counterr from './Counterr'
+import Like from './Like'
+import { useDispatch, useSelector } from 'react-redux'
+import { setBackgroundColor } from './redux/action'
+
 export default function App() {
-  const [count,setCount] = useState(0)
-  const data = useContext(coloContext)
-  console.log(data)
+  let bgColor = useSelector((state)=>state.color.backgroundColor)
+  let dispatch = useDispatch()
   return (
-    <div>
-      <myContext.Provider value={{count,setCount}}>
-        <Comp1/>
-      </myContext.Provider>
+    <div style={{backgroundColor:bgColor}}>
+      <button onClick={()=>dispatch(setBackgroundColor("black"))}>Black</button>
+      <button onClick={()=>dispatch(setBackgroundColor("red"))}>RED</button>
+      <button onClick={()=>dispatch(setBackgroundColor("gray"))}>Gray</button>
+      <button onClick={()=>dispatch(setBackgroundColor("green"))}>Green</button>
+      <button onClick={()=>dispatch(setBackgroundColor("pink"))}>Pink</button>
+      <Counterr/>
+      <Like/>
     </div>
   )
 }
-
-export {myContext}
