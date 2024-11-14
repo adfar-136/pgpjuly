@@ -16,10 +16,10 @@
 // },2000)
 // console.log(typeof x)
 var fs = require("fs");
-console.log("Adfar")
-var data  = fs.readFileSync("./adfar.txt","utf-8")
-console.log(data)
-console.log("Rasheed")
+console.log(fs)
+// var data  = fs.readFileSync("./adfar.txt","utf-8");
+// console.log(data);
+// console.log("Rasheed");
 // var data  = fs.readFileSync("./adfar.txt","utf-8");
 // fs.writeFileSync("output.txt","let us begin")
 // fs.appendFileSync("./output.txt"," We have started the Node js backend");
