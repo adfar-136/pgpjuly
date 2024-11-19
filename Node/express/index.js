@@ -1,19 +1,15 @@
 const express = require("express")
-const path = require("path")
 const app = express();
-var filePath = path.join(__dirname,"public")
-app.use(express.static(filePath))
+app.set("view engine","ejs");
 app.get("/",(req,res)=>{
-     res.sendFile(path.join(__dirname,"public","index.html"))
+    res.render("index",{
+        name:"Adfar RAsheed",
+        age:35
+    })
 })
 app.get("/about",(req,res)=>{
-    res.sendFile(path.join(__dirname,"public","about.html"))
-
+    res.render("about")
 })
-app.get("/contact",(req,res)=>{
-    res.sendFile(path.join(__dirname,"public","contact.html"))
-
-})
-app.listen(3000,()=>{
-    console.log("server is running on port 3000")
+app.listen(4000,()=>{
+    console.log("lisstening on port 4000")
 })
